@@ -104,7 +104,6 @@ function calcDateDiff() {
     let firstDigit = Number(String(time)[0]);
     let numDigits = String(time).length;
     let repeatNumber = Number(String(firstDigit).repeat(numDigits));
-    let roundedValue = Math.round(time / Math.pow(10, numDigits - 1)) * Math.pow(10, numDigits - 1);
     let powerOf10 = Math.pow(10, Math.floor(Math.log10(time)));
     let roundedNumber = Math.ceil(time / powerOf10) * powerOf10;
     if (time == roundedNumber) {
@@ -123,20 +122,53 @@ function calcDateDiff() {
 
     itogs[`itog${key.slice(4)}`] = itog;
   }
-  
-  let diffItogSec = new Date(now.getTime() - itogs.itogSec);
-  console.log("diffItogSec.getTime():" + diffItogSec.getTime() + ", diffItogSec:" + diffItogSec + ", itogs.itogSec:" + itogs.itogSec);
-  console.log(diffItogSec.getDate() + "." + diffItogSec.getMonth() + "." + diffItogSec.getFullYear() + ":" + diffItogSec.getHours() + ":" + diffItogSec.getMinutes());
 
-  //let diffItogMinutes = new Date(now + itogs.itogMin);
-  //console.log(diffItogMinutes.getDate() + "." + diffItogMinutes.getMonth() + "." + diffItogMinutes.getFullYear() + ":" + diffItogMinutes.getHours() + ":" + diffItogMinutes.getMinutes());
+  const monthNames = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
 
-  document.getElementById("timeSec").innerText = itogs.itogSec;
-  document.getElementById("timeMin").innerText = itogs.itogMin;
-  document.getElementById("timeHour").innerText = itogs.itogHours;
-  document.getElementById("timeDays").innerText = itogs.itogDays;
-  document.getElementById("timeMonths").innerText = itogs.itogMonths;
-  document.getElementById("timeYears").innerText = itogs.itogYears;
+  let diffItogSec = new Date(collectedTime.getTime() + itogs.itogSec * 1000);
+  let diffItogMin = new Date(collectedTime.getTime() + itogs.itogMin * 1000 * 60);
+  let diffItogHour = new Date(collectedTime.getTime() + itogs.itogHours * 1000 * 60 * 60);
+  let diffItogDay = new Date(collectedTime.getTime() + itogs.itogDays * 1000 * 60 * 60 * 24);
+  let diffItogMonth = new Date(collectedTime.getTime() + itogs.itogMonths * 1000 * 60 * 60 * 24 * 30);
+  let diffItogYear = new Date(collectedTime.getTime() + itogs.itogYears * 1000 * 60 * 60 * 24 * 365);
+  let dSec = itogs.itogSec + " - " + diffItogSec.getDate() + " " + monthNames[diffItogSec.getMonth() + 1] + " " + diffItogSec.getFullYear() + " " + diffItogSec.getHours() + ":" + diffItogSec.getMinutes()
+  let dMin = itogs.itogMin + " - " + diffItogMin.getDate() + " " + monthNames[diffItogMin.getMonth() + 1] + " " + diffItogMin.getFullYear() + " " + diffItogMin.getHours() + ":" + diffItogMin.getMinutes()
+  let dHour = itogs.itogHours + " - " + diffItogHour.getDate() + " " + monthNames[diffItogHour.getMonth() + 1] + " " + diffItogHour.getFullYear() + " " + diffItogHour.getHours() + ":" + diffItogHour.getMinutes()
+  let dDay = itogs.itogDays + " - " + diffItogDay.getDate() + " " + monthNames[diffItogDay.getMonth() + 1] + " " + diffItogDay.getFullYear() + " " + diffItogDay.getHours() + ":" + diffItogDay.getMinutes()
+  let dMonth = itogs.itogMonths + " - " + diffItogMonth.getDate() + " " + monthNames[diffItogMonth.getMonth() + 1] + " " + diffItogMonth.getFullYear() + " " + diffItogMonth.getHours() + ":" + diffItogMonth.getMinutes()
+  let dYear = itogs.itogYears + " - " + diffItogYear.getDate() + " " + monthNames[diffItogYear.getMonth() + 1] + " " + diffItogYear.getFullYear() + " " + diffItogYear.getHours() + ":" + diffItogYear.getMinutes()
+
+  document.getElementById("timeSec").innerText = dSec; 
+  if (itogs.itogMin != 0) { 
+    document.getElementById("timeMin").innerText = dMin;
+    document.getElementById("timeMin").classList.remove("d-none"); 
+  } else { 
+    document.getElementById("timeMin").classList.add("d-none"); 
+  }
+  if (itogs.itogHours != 0) { 
+    document.getElementById("timeHour").innerText = dHour;
+    document.getElementById("timeHour").classList.remove("d-none");  
+  } else { 
+    document.getElementById("timeHour").classList.add("d-none"); 
+  }
+  if (itogs.itogDays != 0) { 
+    document.getElementById("timeDays").innerText = dDay; 
+    document.getElementById("timeDays").classList.remove("d-none"); 
+  } else { 
+    document.getElementById("timeDays").classList.add("d-none"); 
+  }
+  if (itogs.itogMonths != 0) { 
+    document.getElementById("timeMonths").innerText = dMonth; 
+    document.getElementById("timeMonths").classList.remove("d-none"); 
+  } else { 
+    document.getElementById("timeMonths").classList.add("d-none"); 
+  }
+  if (itogs.itogYears != 0) { 
+    document.getElementById("timeYears").innerText = dYear; 
+    document.getElementById("timeYears").classList.remove("d-none"); 
+  } else { 
+    document.getElementById("timeYears").classList.add("d-none"); 
+  }
 
 }
 
