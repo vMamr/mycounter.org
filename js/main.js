@@ -42,10 +42,10 @@ function calcDateDiff() {
   let currentDate = new Date(now.getTime() + timezoneOffset * 60 * 1000 - timezone * 60 * 1000);
 
   if (collectedTime < currentDate) {
-    document.querySelector(".collected-date").innerText = "От даты " + collectedTime.toLocaleString() + " прошло:";
+    document.querySelector(".collected-date").innerText = "От даты " + collectedTime.toLocaleString() + " прошло";
     dateDiff = currentDate.getTime() - new Date(collectedTime).getTime();
   } else {
-    document.querySelector(".collected-date").innerText = "До даты " + collectedTime.toLocaleString() + " пройдет:";
+    document.querySelector(".collected-date").innerText = "До даты " + collectedTime.toLocaleString() + " пройдет";
     dateDiff = new Date(collectedTime).getTime() - currentDate.getTime();
   }
 
