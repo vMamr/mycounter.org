@@ -126,7 +126,7 @@ function calcDateDiff() {
   }
 
   let diffItogSec = itogs.itogSec + seconds;
-  console.log(Date(diffItogSec));
+  console.log(new Date(diffItogSec));
 
 
   document.getElementById("timeSec").innerText = itogs.itogSec;
