@@ -163,7 +163,7 @@ function calcDateDiff() {
   } else { 
     document.getElementById("timeMonths").classList.add("d-none"); 
   }
-  if (itogs.itogYears != 0) { 
+  if (itogs.itogYears > 10) { 
     document.getElementById("timeYears").innerText = dYear; 
     document.getElementById("timeYears").classList.remove("d-none"); 
   } else { 
