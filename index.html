@@ -1,0 +1,224 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Mycounter.org - разница во времени между датами</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/bootstrap-icons.css">
+  <link type="image/png" sizes="16x16" rel="icon" href="/img/favicon16.png">
+  <link type="image/png" sizes="32x32" rel="icon" href="/img/favicon32.png">
+  <link type="image/png" sizes="96x96" rel="icon" href="/img/favicon96.png">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(93629219, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/93629219" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+
+<body>
+  <div class="container 1text-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1>Узнай разницу во времени между датой и сегодняшним днем</h1>
+        </div>
+      </div>
+    </div>
+    <span>Сервер определил, что сейчас:</span>
+    <span id="timeToNow"></span>
+    <br><br>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h2>Введите дату, от которой будем считать</h2>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-floating mb-3 col-3 col-xl-2">
+        <input class="form-control" type="text" id="year" name="year" placeholder="XXXX" pattern="[0-9]{4}"
+          value="2023">
+        <label for="year" class="mx-2">Год</label>
+      </div>
+      <div class="form-floating mb-3 col-6 col-xl-3">
+        <select class="form-select" id="month" name="month">
+          <option value="1">Январь</option>
+          <option value="2">Февраль</option>
+          <option value="3">Март</option>
+          <option value="4">Апрель</option>
+          <option value="5" selected>Май</option>
+          <option value="6">Июнь</option>
+          <option value="7">Июль</option>
+          <option value="8">Август</option>
+          <option value="9">Сентябрь</option>
+          <option value="10">Октябрь</option>
+          <option value="11">Ноябрь</option>
+          <option value="12">Декабрь</option>
+        </select>
+        <label for="month" class="mx-2">Месяц</label>
+      </div>
+      <div class="form-floating mb-3 col-3 col-xl-2">
+        <input class="form-control" type="text" id="day" name="day" placeholder="XX" pattern="[0-9]{1,2}" value="12">
+        <label for="day" class="mx-2">День</label>
+      </div>
+      <div class="form-floating mb-3 col-4 col-sm-3 col-xl-1">
+        <input class="form-control" type="text" id="hour" name="hour" placeholder="XX" pattern="[0-9]{1,2}" value="00">
+        <label for="hour" class="mx-2">Час</label>
+      </div>
+      <div class="form-floating mb-3 col-4 col-sm-3 col-xl-1">
+        <input class="form-control" type="text" id="minute" name="minute" placeholder="XX" pattern="[0-9]{1,2}"
+          value="00">
+        <label for="minute" class="mx-2">Минуты</label>
+      </div>
+      <div class="form-floating mb-3 col-4 col-sm-2 col-xl-1">
+        <input class="form-control" type="text" id="second" name="second" placeholder="XX" pattern="[0-9]{1,2}"
+          value="00">
+        <label for="second">Секунды</label>
+      </div>
+      <div class="form-floating mb-3 col-12 col-sm-4 col-xl-2">
+        <select class="form-select" id="timezone" name="timezone">
+          <option value="0">UTC+0</option>
+          <option value="-60">UTC+1</option>
+          <option value="-120" selected>UTC+2</option>
+          <option value="-180">UTC+3</option>
+          <option value="-240">UTC+4</option>
+          <option value="-300">UTC+5</option>
+          <option value="-360">UTC+6</option>
+          <option value="-420">UTC+7</option>
+          <option value="-480">UTC+8</option>
+          <option value="-540">UTC+9</option>
+          <option value="-600">UTC+10</option>
+          <option value="-660">UTC+11</option>
+          <option value="-720">UTC+12</option>
+        </select>
+        <label for="timezone" class="mx-2">Часовой пояс</label>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><span class="collected-date"></span></h4>
+            <p class="card-text"><span id="timediff"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h2>Или если быть точным</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 21rem;">
+          <div class="card-header">Секунд</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="seconds"></span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3" style="max-width: 18rem;">
+          <div class="card-header">Минут</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="minutes"></span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3" style="max-width: 16rem;">
+          <div class="card-header">Часов</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="hours"></span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3" style="max-width: 14rem;">
+          <div class="card-header">Дней</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="days"></span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3" style="max-width: 12rem;">
+          <div class="card-header">Недель</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="weeks"></span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3" style="max-width: 10rem;">
+          <div class="card-header">Месяцев</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="months"></span></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3" style="max-width: 8rem;">
+          <div class="card-header">Лет</div>
+          <div class="card-body">
+            <h4 class="card-title"><span id="years"></span></span></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h2>Сохраните ссылку с заданной датой</h2>
+        </div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input class="form-control" type="text" id="savelink" name="savelink"
+        placeholder="Обновите страницу, чтобы ссылка появилась" value="00"
+        aria-label="Обновите страницу, чтобы ссылка появилась" aria-describedby="copyButton">
+      <button class="btn btn-primary" type="button" id="copyButton">Копировать</button>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <p id="timeSec"></p>
+          <p id="timeMin"></p>
+          <p id="timeHour"></p>
+          <p id="timeDays"></p>
+          <p id="timeMonths"></p>
+          <p id="timeYears"></p>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="row">
+        <div class="col-xl-12">
+
+          <p>Made by <a href="https://vmamr.ru/">vMamr</a>.</p>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
