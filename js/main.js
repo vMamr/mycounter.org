@@ -124,7 +124,7 @@ function calcDateDiff() {
     itogs[`itog${key.slice(4)}`] = itog;
   }
   
-  let diffItogSec = Date(now.getTime() + itogs.itogSec);
+  let diffItogSec = new Date(now.getTime() + itogs.itogSec);
   console.log("now is:" + diffItogSec.getTime() + "|" + diffItogSec);
   console.log(diffItogSec.getDate() + "." + diffItogSec.getMonth() + "." + diffItogSec.getFullYear() + ":" + diffItogSec.getHours() + ":" + diffItogSec.getMinutes());
 
