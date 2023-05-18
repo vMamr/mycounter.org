@@ -9,7 +9,6 @@ const dateParam = urlParams.get('DATE');
 const UTCParam = urlParams.get('UTC');
 if (dateParam) {
   dateInMs = parseInt(dateParam, 10);
-  let dateFromUrl = new Date(dateInMs);
 }
 
 if (UTCParam) {
@@ -124,8 +123,8 @@ function calcDateDiff() {
 
     itogs[`itog${key.slice(4)}`] = itog;
   }
-  console.log("now is:" + now)
-  let diffItogSec = new Date(now + itogs.itogSec);
+  console.log("now is:" + now.getTime());
+  let diffItogSec = new Date.getTime(now + itogs.itogSec);
   console.log(diffItogSec.getDate() + "." + diffItogSec.getMonth() + "." + diffItogSec.getFullYear() + ":" + diffItogSec.getHours() + ":" + diffItogSec.getMinutes());
 
   let diffItogMinutes = new Date(now + itogs.itogMin);
