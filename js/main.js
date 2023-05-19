@@ -131,12 +131,12 @@ function calcDateDiff() {
   let diffItogDay = new Date(collectedTime.getTime() + itogs.itogDays * 1000 * 60 * 60 * 24);
   let diffItogMonth = new Date(collectedTime.getTime() + itogs.itogMonths * 1000 * 60 * 60 * 24 * 30);
   let diffItogYear = new Date(collectedTime.getTime() + itogs.itogYears * 1000 * 60 * 60 * 24 * 365);
-  let dSec = itogs.itogSec + " - " + diffItogSec.getDate() + " " + monthNames[diffItogSec.getMonth() + 1] + " " + diffItogSec.getFullYear() + " " + diffItogSec.getHours() + ":" + diffItogSec.getMinutes()
-  let dMin = itogs.itogMin + " - " + diffItogMin.getDate() + " " + monthNames[diffItogMin.getMonth() + 1] + " " + diffItogMin.getFullYear() + " " + diffItogMin.getHours() + ":" + diffItogMin.getMinutes()
-  let dHour = itogs.itogHours + " - " + diffItogHour.getDate() + " " + monthNames[diffItogHour.getMonth() + 1] + " " + diffItogHour.getFullYear() + " " + diffItogHour.getHours() + ":" + diffItogHour.getMinutes()
-  let dDay = itogs.itogDays + " - " + diffItogDay.getDate() + " " + monthNames[diffItogDay.getMonth() + 1] + " " + diffItogDay.getFullYear() + " " + diffItogDay.getHours() + ":" + diffItogDay.getMinutes()
-  let dMonth = itogs.itogMonths + " - " + diffItogMonth.getDate() + " " + monthNames[diffItogMonth.getMonth() + 1] + " " + diffItogMonth.getFullYear() + " " + diffItogMonth.getHours() + ":" + diffItogMonth.getMinutes()
-  let dYear = itogs.itogYears + " - " + diffItogYear.getDate() + " " + monthNames[diffItogYear.getMonth() + 1] + " " + diffItogYear.getFullYear() + " " + diffItogYear.getHours() + ":" + diffItogYear.getMinutes()
+  let dSec = itogs.itogSec + " секунд - " + diffItogSec.getDate() + " " + monthNames[diffItogSec.getMonth() + 1] + " " + diffItogSec.getFullYear() + " " + diffItogSec.getHours() + ":" + diffItogSec.getMinutes()
+  let dMin = itogs.itogMin + " минут - " + diffItogMin.getDate() + " " + monthNames[diffItogMin.getMonth() + 1] + " " + diffItogMin.getFullYear() + " " + diffItogMin.getHours() + ":" + diffItogMin.getMinutes()
+  let dHour = itogs.itogHours + " часов - " + diffItogHour.getDate() + " " + monthNames[diffItogHour.getMonth() + 1] + " " + diffItogHour.getFullYear() + " " + diffItogHour.getHours() + ":" + diffItogHour.getMinutes()
+  let dDay = itogs.itogDays + " дней - " + diffItogDay.getDate() + " " + monthNames[diffItogDay.getMonth() + 1] + " " + diffItogDay.getFullYear() + " " + diffItogDay.getHours() + ":" + diffItogDay.getMinutes()
+  let dMonth = itogs.itogMonths + " месяцев - " + diffItogMonth.getDate() + " " + monthNames[diffItogMonth.getMonth() + 1] + " " + diffItogMonth.getFullYear() + " " + diffItogMonth.getHours() + ":" + diffItogMonth.getMinutes()
+  let dYear = itogs.itogYears + " лет - " + diffItogYear.getDate() + " " + monthNames[diffItogYear.getMonth() + 1] + " " + diffItogYear.getFullYear() + " " + diffItogYear.getHours() + ":" + diffItogYear.getMinutes()
 
   document.getElementById("timeSec").innerText = dSec; 
   if (itogs.itogMin != 0) { 
